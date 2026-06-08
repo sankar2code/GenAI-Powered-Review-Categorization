@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Settings — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-slate-200 px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-display font-bold text-ink">FreshTake</p><p class="text-[11px] text-muted">Harvest Kitchen · Org settings</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Workflow</p>
+      <a href="02-dashboard.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="layout-dashboard" class="ft-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-new-batch.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="upload" class="ft-nav-icon h-4 w-4"></i> New batch</a>
+      <a href="05-batch-results.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="table-2" class="ft-nav-icon h-4 w-4"></i> Batch results</a>
+      <a href="07-action-queue.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="route" class="ft-nav-icon h-4 w-4"></i> Action queue <span class="ml-auto rounded-full bg-negative/10 px-1.5 py-0.5 text-[10px] font-semibold text-negative">3 open</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Insights</p>
+      <a href="08-trend-report.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="trending-up" class="ft-nav-icon h-4 w-4"></i> Trend report</a>
+      <a href="09-prompt-library.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="library" class="ft-nav-icon h-4 w-4"></i> Prompt library</a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Account</p>
+      <a href="10-settings.html" class="ft-nav-link is-active flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="settings" class="ft-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-slate-200 p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted hover:bg-surfaceTint hover:text-body"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">MR</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-ink">Maria Reyes</p><p class="text-[11px] text-muted">General Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-slate-200 p-2 text-body hover:bg-surfaceTint lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="font-display text-lg font-semibold">Settings</h1>
+        <p class="text-xs text-muted">Locations, brand voice, team &amp; roles, notifications, and the engineered-prompt safety controls</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-5xl ft-fade-in">
+
+      <!-- Tabs -->
+      <div data-tabs="settings" class="flex flex-wrap gap-2 border-b border-slate-200 pb-3 mb-6">
+        <button data-tab="locations" class="is-active rounded-xl px-3.5 py-2 text-sm font-medium text-body [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint inline-flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4"></i> Locations</button>
+        <button data-tab="voice" class="rounded-xl px-3.5 py-2 text-sm font-medium text-body [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint inline-flex items-center gap-2"><i data-lucide="mic" class="h-4 w-4"></i> Brand voice &amp; reply tone</button>
+        <button data-tab="team" class="rounded-xl px-3.5 py-2 text-sm font-medium text-body [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint inline-flex items-center gap-2"><i data-lucide="users" class="h-4 w-4"></i> Team &amp; roles</button>
+        <button data-tab="notify" class="rounded-xl px-3.5 py-2 text-sm font-medium text-body [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint inline-flex items-center gap-2"><i data-lucide="bell" class="h-4 w-4"></i> Notifications</button>
+        <button data-tab="safety" class="rounded-xl px-3.5 py-2 text-sm font-medium text-body [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint inline-flex items-center gap-2"><i data-lucide="shield-check" class="h-4 w-4"></i> Approval &amp; safety</button>
+      </div>
+
+      <!-- Locations -->
+      <div data-tab-panel="locations" data-tabs-id="settings" class="space-y-4">
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold">Pilot locations</p>
+              <p class="text-xs text-muted">Harvest Kitchen — 12 locations enrolled in the FreshTake pilot (PRD target customer: 1–50 locations)</p>
+            </div>
+            <button onclick="ftToast('Opening the add-location flow (mockup)…', {icon:'plus'})" class="btn btn-secondary text-xs py-1.5 px-3"><i data-lucide="plus" class="h-3.5 w-3.5"></i> Add location</button>
+          </div>
+          <ul class="mt-4 divide-y divide-slate-100 text-sm">
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brandSoft text-brandStrong"><i data-lucide="map-pin" class="h-4 w-4"></i></div>
+              <div class="flex-1"><p class="font-medium text-ink">Riverside</p><p class="text-xs text-muted">128 reviews this month · GM: Maria Reyes</p></div>
+              <span class="pill badge-low"><i data-lucide="check" class="h-3 w-3"></i> Active</span>
+            </li>
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brandSoft text-brandStrong"><i data-lucide="map-pin" class="h-4 w-4"></i></div>
+              <div class="flex-1"><p class="font-medium text-ink">Midtown</p><p class="text-xs text-muted">156 reviews this month · GM: Theo Marsh</p></div>
+              <span class="pill badge-low"><i data-lucide="check" class="h-3 w-3"></i> Active</span>
+            </li>
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brandSoft text-brandStrong"><i data-lucide="map-pin" class="h-4 w-4"></i></div>
+              <div class="flex-1"><p class="font-medium text-ink">Brookfield Heights</p><p class="text-xs text-muted">128 reviews this month · GM: Priyanka Subramaniam</p></div>
+              <span class="pill badge-low"><i data-lucide="check" class="h-3 w-3"></i> Active</span>
+            </li>
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-surfaceTint text-muted"><i data-lucide="map-pin" class="h-4 w-4"></i></div>
+              <div class="flex-1"><p class="font-medium text-ink">+ 9 more locations</p><p class="text-xs text-muted">Onboarding across the region — Dana Okafor coordinating rollout</p></div>
+              <span class="pill badge-normal"><i data-lucide="clock" class="h-3 w-3"></i> Onboarding</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Brand voice & reply tone (engineered-prompt knobs surfaced as friendly controls) -->
+      <div data-tab-panel="voice" data-tabs-id="settings" class="space-y-4 hidden">
+        <div class="ft-card rounded-2xl p-5">
+          <p class="text-sm font-semibold">Reply tone — tune how Copilot AI drafts your first replies</p>
+          <p class="text-xs text-muted">These sliders translate directly into the engineered prompt's tone instructions — no prompt-writing required.</p>
+          <div class="mt-5 space-y-5">
+            <div>
+              <div class="flex items-center justify-between text-sm"><span class="text-body">Formal</span><span class="font-medium text-brandInk">Warm &amp; conversational</span><span class="text-body">Playful</span></div>
+              <input type="range" min="0" max="100" value="62" class="mt-2 w-full accent-brand ft-focus" aria-label="Reply tone: formal to playful" />
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-sm"><span class="text-body">Brief</span><span class="font-medium text-brandInk">Balanced length</span><span class="text-body">Detailed</span></div>
+              <input type="range" min="0" max="100" value="48" class="mt-2 w-full accent-brand ft-focus" aria-label="Reply length: brief to detailed" />
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-sm"><span class="text-body">Reserved</span><span class="font-medium text-brandInk">Emoji use</span><span class="text-body">Expressive 🌿</span></div>
+              <input type="range" min="0" max="100" value="55" class="mt-2 w-full accent-brand ft-focus" aria-label="Emoji use: reserved to expressive" />
+            </div>
+          </div>
+        </div>
+
+        <div class="ft-card rounded-2xl p-5">
+          <p class="text-sm font-semibold">Example replies the prompt learns from</p>
+          <p class="text-xs text-muted">Add a few of your team's best replies and Copilot AI will match their voice in future drafts</p>
+          <div class="mt-3 space-y-2.5">
+            <div class="rounded-xl border border-slate-200 bg-surfaceTint/60 p-3 text-sm text-body">"Thank you for your kind words! We can't wait to welcome you back 🌿" <span class="block mt-1 text-xs text-muted">— tagged: positive, gratitude + invite-return</span></div>
+            <div class="rounded-xl border border-slate-200 bg-surfaceTint/60 p-3 text-sm text-body">"We're sorry to hear about your experience with our service — we'll review our process and would love to offer you a complimentary appetizer on your next visit." <span class="block mt-1 text-xs text-muted">— tagged: negative, apology + specific solution</span></div>
+          </div>
+          <button onclick="ftToast('Opening the example-reply editor (mockup)…', {icon:'plus'})" class="btn btn-secondary mt-3 text-xs py-1.5 px-3"><i data-lucide="plus" class="h-3.5 w-3.5"></i> Add example reply</button>
+        </div>
+      </div>
+
+      <!-- Team & roles -->
+      <div data-tab-panel="team" data-tabs-id="settings" class="space-y-4 hidden">
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold">Team &amp; roles — Riverside</p>
+            <button onclick="ftToast('Opening the invite-teammate flow (mockup)…', {icon:'user-plus'})" class="btn btn-secondary text-xs py-1.5 px-3"><i data-lucide="user-plus" class="h-3.5 w-3.5"></i> Invite teammate</button>
+          </div>
+          <ul class="mt-4 divide-y divide-slate-100 text-sm">
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">MR</div>
+              <div class="flex-1"><p class="font-medium text-ink">Maria Reyes</p><p class="text-xs text-muted">maria.reyes@harvestkitchen.com</p></div>
+              <span class="rounded-full bg-surfaceTint px-2.5 py-1 text-xs font-medium text-brandInk">General Manager</span>
+            </li>
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">JT</div>
+              <div class="flex-1"><p class="font-medium text-ink">Jordan Tate</p><p class="text-xs text-muted">jordan.tate@harvestkitchen.com</p></div>
+              <span class="rounded-full bg-surfaceTint px-2.5 py-1 text-xs font-medium text-brandInk">Front-of-House Supervisor</span>
+            </li>
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">DO</div>
+              <div class="flex-1"><p class="font-medium text-ink">Dana Okafor</p><p class="text-xs text-muted">dana.okafor@harvestkitchen.com</p></div>
+              <span class="rounded-full bg-surfaceTint px-2.5 py-1 text-xs font-medium text-brandInk">Regional Operations Manager</span>
+            </li>
+            <li class="flex items-center gap-3 py-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">SP</div>
+              <div class="flex-1"><p class="font-medium text-ink">Sankar Kumar Palaniappan</p><p class="text-xs text-muted">sankar.palaniappan@harvestkitchen.com</p></div>
+              <span class="rounded-full bg-surfaceTint px-2.5 py-1 text-xs font-medium text-brandInk">Prompt Engineer / Admin</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div data-tab-panel="notify" data-tabs-id="settings" class="space-y-4 hidden">
+        <div class="ft-card rounded-2xl p-5">
+          <p class="text-sm font-semibold">Notification preferences</p>
+          <p class="text-xs text-muted">Choose when FreshTake should ping you — email and in-app</p>
+          <ul class="mt-4 divide-y divide-slate-100">
+            <li class="flex items-center justify-between gap-4 py-3">
+              <div><p class="text-sm font-medium text-ink">New batch finished processing</p><p class="text-xs text-muted">Get notified the moment Copilot AI returns a structured table</p></div>
+              <button class="relative h-6 w-11 rounded-full bg-brand transition" onclick="this.querySelector('span').classList.toggle('translate-x-5')" aria-pressed="true" aria-label="Toggle: new batch finished"><span class="absolute left-0.5 top-0.5 h-5 w-5 translate-x-5 rounded-full bg-white shadow transition"></span></button>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3">
+              <div><p class="text-sm font-medium text-ink">High-priority review flagged</p><p class="text-xs text-muted">Immediate alert when a review needs urgent attention</p></div>
+              <button class="relative h-6 w-11 rounded-full bg-brand transition" onclick="this.querySelector('span').classList.toggle('translate-x-5')" aria-pressed="true" aria-label="Toggle: high-priority flagged"><span class="absolute left-0.5 top-0.5 h-5 w-5 translate-x-5 rounded-full bg-white shadow transition"></span></button>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3">
+              <div><p class="text-sm font-medium text-ink">Action queue item nearing 48h</p><p class="text-xs text-muted">Reminder when a logged action is at risk of missing its follow-up window</p></div>
+              <button class="relative h-6 w-11 rounded-full bg-brand transition" onclick="this.querySelector('span').classList.toggle('translate-x-5')" aria-pressed="true" aria-label="Toggle: action nearing deadline"><span class="absolute left-0.5 top-0.5 h-5 w-5 translate-x-5 rounded-full bg-white shadow transition"></span></button>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3">
+              <div><p class="text-sm font-medium text-ink">Monthly trend report ready</p><p class="text-xs text-muted">Sentiment mix, aspect rankings and alert summary for the month</p></div>
+              <button class="relative h-6 w-11 rounded-full bg-slate-300 transition" onclick="this.classList.toggle('bg-brand'); this.classList.toggle('bg-slate-300'); this.querySelector('span').classList.toggle('translate-x-5')" aria-pressed="false" aria-label="Toggle: monthly trend report"><span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition"></span></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Approval & safety (locked toggle) -->
+      <div data-tab-panel="safety" data-tabs-id="settings" class="space-y-4 hidden">
+        <div class="ft-card rounded-2xl p-5 border-brand/30 bg-surfaceTint/60">
+          <div class="flex items-start gap-4">
+            <div class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-brand text-white"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <p class="text-sm font-semibold text-ink">Mandatory human approval before sending</p>
+                <span class="rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">Always on · Locked</span>
+              </div>
+              <p class="mt-1.5 text-sm text-body max-w-xl">FreshTake never sends a reply automatically. Every AI-drafted "1st reply" must be opened, reviewed, optionally edited, and explicitly approved by a person before it reaches a customer (FR9). This is a deliberate product guarantee — not a missing feature — and cannot be switched off from this screen or any other.</p>
+              <p class="mt-2 text-xs text-muted">Why it's locked: protects your brand voice, keeps a human accountable for every public-facing reply, and avoids the reputational risk of an unsupervised AI response. Open questions about <em>raising</em> this threshold for low-risk, high-confidence replies are tracked in PRD §11 — see the README open-questions log.</p>
+            </div>
+            <button class="ft-toggle-locked relative h-6 w-11 rounded-full flex-shrink-0" disabled aria-disabled="true" aria-label="Mandatory human approval — locked on, cannot be disabled" title="This control is intentionally locked on per FR9"></button>
+          </div>
+        </div>
+
+        <div class="ft-card rounded-2xl p-5">
+          <p class="text-sm font-semibold">Reliability fallback</p>
+          <p class="text-xs text-muted mt-1">If Microsoft Copilot AI is temporarily unavailable, FreshTake automatically retries with a secondary engineered prompt so batches keep processing without manual intervention. You'll see a small badge on affected batches.</p>
+          <div class="mt-3 flex items-center gap-2 text-xs text-info bg-info/5 border border-info/20 rounded-lg px-3 py-2 w-fit">
+            <i data-lucide="info" class="h-3.5 w-3.5"></i> Currently enabled for all locations · last triggered May 19, 2026 (4-minute outage, no batches lost)
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FreshTake — Mockup Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8',
+      surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <header class="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-30">
+    <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-white shadow-sm"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+        <div class="leading-tight">
+          <p class="font-display text-base font-bold text-ink">FreshTake</p>
+          <p class="text-[11px] text-muted">Review intelligence, refreshingly fast</p>
+        </div>
+      </div>
+      <span class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-body">
+        <i data-lucide="layout-grid" class="h-3.5 w-3.5 text-brandStrong"></i> Clickable mockup — 11 screens
+      </span>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-6 py-10 space-y-12">
+
+    <!-- Hero / framing -->
+    <section class="ft-fade-in grid gap-8 lg:grid-cols-5 items-start">
+      <div class="lg:col-span-3 space-y-4">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-brandSoft px-3 py-1 text-xs font-semibold text-brandInk">
+          <i data-lucide="sparkles" class="h-3.5 w-3.5"></i> GenAI-Powered Review Categorization System
+        </span>
+        <h1 class="font-display text-3xl sm:text-4xl font-bold leading-tight text-ink">
+          Turn a pile of customer reviews into <span class="text-brandStrong">action</span> — in one pass, in under 30&nbsp;seconds.
+        </h1>
+        <p class="text-base leading-relaxed text-body max-w-2xl">
+          FreshTake is a workflow tool for restaurant managers. Paste or upload a batch of reviews, and a Microsoft-Copilot-driven
+          engineered prompt returns a structured table — sentiment, aspect tags, priority, a suggested action, and a
+          ready-to-edit first reply — for every review, in one pass. Managers stay in the loop: every reply is reviewed,
+          edited if needed, and approved by a human before it's sent. High-priority issues route straight into an action queue
+          so nothing slips through.
+        </p>
+        <div class="flex flex-wrap gap-3 pt-1">
+          <a href="screens/01-sign-in.html" class="btn btn-primary"><i data-lucide="log-in" class="h-4 w-4"></i> Start at sign-in</a>
+          <a href="screens/05-batch-results.html" class="btn btn-secondary"><i data-lucide="table-2" class="h-4 w-4"></i> Jump to the core screen</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 ft-card rounded-2xl p-5">
+        <p class="text-xs font-semibold uppercase tracking-wider text-muted">North Star metric</p>
+        <p class="mt-2 font-display text-3xl font-bold text-brandStrong">≥ 90%</p>
+        <p class="text-sm text-body">of reviews get a personalised reply sent within 24 hours — up from a baseline under 30%.</p>
+        <div class="mt-4 grid grid-cols-2 gap-3 text-xs">
+          <div class="rounded-xl bg-surfaceTint p-3">
+            <p class="font-semibold text-brandInk">≥ 90%</p>
+            <p class="text-muted">categorisation accuracy vs. expert review</p>
+          </div>
+          <div class="rounded-xl bg-surfaceTint p-3">
+            <p class="font-semibold text-brandInk">&lt; 1 min</p>
+            <p class="text-muted">staff time per response (was 5–10 min)</p>
+          </div>
+          <div class="rounded-xl bg-surfaceTint p-3">
+            <p class="font-semibold text-brandInk">&lt; 30 sec</p>
+            <p class="text-muted">to process a 10-review batch</p>
+          </div>
+          <div class="rounded-xl bg-surfaceTint p-3">
+            <p class="font-semibold text-brandInk">0%</p>
+            <p class="text-muted">hallucinated tags on N/A reviews</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personas -->
+    <section class="ft-fade-in space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="font-display text-xl font-bold text-ink">Who uses FreshTake</h2>
+          <p class="text-sm text-body">Four personas drawn from the PRD's "who" — each sees a tailored slice of the product.</p>
+        </div>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brandSoft text-brandStrong font-display font-bold">MR</div>
+          <p class="mt-3 font-semibold text-ink">Maria Reyes</p>
+          <p class="text-xs text-muted">General Manager · Riverside</p>
+          <p class="mt-2 text-sm text-body">Primary user. Fast daily triage of new batches; approves and personalises AI-drafted replies; owns the high-priority queue.</p>
+          <p class="mt-3 text-xs text-muted">Sees: Dashboard, Batch results, Review detail, Action queue</p>
+        </div>
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brandSoft text-brandStrong font-display font-bold">JT</div>
+          <p class="mt-3 font-semibold text-ink">Jordan Tate</p>
+          <p class="text-xs text-muted">Front-of-House Supervisor · Riverside</p>
+          <p class="mt-2 text-sm text-body">Drafts and sends day-to-day replies; edits AI drafts for tone before approval; logs follow-up actions with the team.</p>
+          <p class="mt-3 text-xs text-muted">Sees: New batch, Review detail, Action queue</p>
+        </div>
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brandSoft text-brandStrong font-display font-bold">DO</div>
+          <p class="mt-3 font-semibold text-ink">Dana Okafor</p>
+          <p class="text-xs text-muted">Regional Operations Manager · 12 locations</p>
+          <p class="mt-2 text-sm text-body">Calibrates priority judgement across locations, reviews aspect-level insight, and watches month-over-month sentiment trends.</p>
+          <p class="mt-3 text-xs text-muted">Sees: Trend report, Action queue, Dashboard (multi-location)</p>
+        </div>
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brandSoft text-brandStrong font-display font-bold">SP</div>
+          <p class="mt-3 font-semibold text-ink">Sankar Kumar Palaniappan</p>
+          <p class="text-xs text-muted">Prompt Engineer / Admin (PRD §10 team)</p>
+          <p class="mt-2 text-sm text-body">Owns the prompt library and version history, runs the weekly 20% accuracy audit, and tunes brand-voice settings.</p>
+          <p class="mt-3 text-xs text-muted">Sees: Prompt library, Settings</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flow map -->
+    <section class="ft-fade-in space-y-4">
+      <div>
+        <h2 class="font-display text-xl font-bold text-ink">The five flows (PRD §3.3)</h2>
+        <p class="text-sm text-body">This is the prototype's skeleton — click through any flow start to finish.</p>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-2">
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex items-center gap-2 text-brandStrong"><i data-lucide="upload" class="h-4 w-4"></i><p class="text-xs font-semibold uppercase tracking-wide">Flow 1 · Story 1</p></div>
+          <p class="mt-1 font-semibold text-ink">Review batch processing</p>
+          <p class="mt-1 text-sm text-body">Paste or upload a batch → submit to the engineered prompt → processing state → structured 5-column table → export to CSV/Excel.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs font-medium">
+            <a href="screens/03-new-batch.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">1. New batch</a>
+            <a href="screens/04-processing.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">2. Processing</a>
+            <a href="screens/05-batch-results.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">3. Results table</a>
+          </div>
+        </div>
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex items-center gap-2 text-brandStrong"><i data-lucide="route" class="h-4 w-4"></i><p class="text-xs font-semibold uppercase tracking-wide">Flow 2 · Story 2</p></div>
+          <p class="mt-1 font-semibold text-ink">Priority-based action routing</p>
+          <p class="mt-1 text-sm text-body">Filter by Priority = High → assign the suggested action to a department → log it with a timestamp → track Open / In&nbsp;Progress / Resolved.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs font-medium">
+            <a href="screens/05-batch-results.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">1. Filter results</a>
+            <a href="screens/07-action-queue.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">2. Action queue</a>
+          </div>
+        </div>
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex items-center gap-2 text-brandStrong"><i data-lucide="reply" class="h-4 w-4"></i><p class="text-xs font-semibold uppercase tracking-wide">Flow 3 · FR9</p></div>
+          <p class="mt-1 font-semibold text-ink">First reply drafting &amp; sending</p>
+          <p class="mt-1 text-sm text-body">Open a review → read the AI-drafted reply → edit/personalise → human approves and sends. There is no automated send — ever.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs font-medium">
+            <a href="screens/06-review-detail.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">1. Review detail &amp; reply editor</a>
+          </div>
+        </div>
+        <div class="ft-card rounded-2xl p-5">
+          <div class="flex items-center gap-2 text-brandStrong"><i data-lucide="git-branch" class="h-4 w-4"></i><p class="text-xs font-semibold uppercase tracking-wide">Flow 4 · P1 · FR10</p></div>
+          <p class="mt-1 font-semibold text-ink">Prompt iteration &amp; improvement</p>
+          <p class="mt-1 text-sm text-body">Weekly review of miscategorised cases → versioned prompt change log → accuracy tracked against the 20% manual-audit baseline.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs font-medium">
+            <a href="screens/09-prompt-library.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">1. Prompt library &amp; audit</a>
+          </div>
+        </div>
+        <div class="ft-card rounded-2xl p-5 lg:col-span-2">
+          <div class="flex items-center gap-2 text-brandStrong"><i data-lucide="trending-up" class="h-4 w-4"></i><p class="text-xs font-semibold uppercase tracking-wide">Flow 5 · P2 / V2 · §3.6</p></div>
+          <p class="mt-1 font-semibold text-ink">Trend monitoring</p>
+          <p class="mt-1 text-sm text-body">Monthly aggregation of % positive / negative / neutral, most-tagged aspects, and an alert when negative reviews cross 30% of the month's volume.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs font-medium">
+            <a href="screens/08-trend-report.html" class="rounded-full border border-slate-200 px-3 py-1 hover:bg-surfaceTint">1. Trend report</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All screens -->
+    <section class="ft-fade-in space-y-4">
+      <div>
+        <h2 class="font-display text-xl font-bold text-ink">All screens</h2>
+        <p class="text-sm text-body">Every screen, in storyboard order. Each one links back here and to its neighbours.</p>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="screens/01-sign-in.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">01 <i data-lucide="log-in" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Sign in</p>
+          <p class="text-xs text-body">Entry point for managers and admins.</p>
+        </a>
+        <a href="screens/02-dashboard.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">02 <i data-lucide="layout-dashboard" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Dashboard</p>
+          <p class="text-xs text-body">GM home: North Star metric, weekly snapshot, high-priority queue, response-rate trend. Includes a first-run empty state.</p>
+        </a>
+        <a href="screens/03-new-batch.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">03 <i data-lucide="upload" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">New batch</p>
+          <p class="text-xs text-body">Paste or upload reviews from Google / Yelp / TripAdvisor / direct form; batch-size validation (≥10).</p>
+        </a>
+        <a href="screens/04-processing.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">04 <i data-lucide="loader-circle" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Processing</p>
+          <p class="text-xs text-body">"Copilot AI is processing your batch…" with a live &lt;30s progress indicator.</p>
+        </a>
+        <a href="screens/05-batch-results.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group ring-1 ring-brand/20">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">05 <i data-lucide="table-2" class="h-3.5 w-3.5 text-brandStrong"></i> <span class="ml-auto rounded-full bg-brandSoft px-2 py-0.5 text-[10px] font-bold text-brandInk">CORE</span></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Batch results</p>
+          <p class="text-xs text-body">The 5-column structured table — sentiment, aspect tags, priority, suggested action, 1st reply — sortable, filterable, exportable.</p>
+        </a>
+        <a href="screens/06-review-detail.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">06 <i data-lucide="message-square-text" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Review detail &amp; reply editor</p>
+          <p class="text-xs text-body">Full review, rationale, "why this priority?", editable AI draft reply, regenerate, approve &amp; send (FR9).</p>
+        </a>
+        <a href="screens/07-action-queue.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">07 <i data-lucide="route" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Action queue</p>
+          <p class="text-xs text-body">High-priority items, department assignment, Open / In Progress / Resolved pipeline, ≥80%-actioned-in-48h target.</p>
+        </a>
+        <a href="screens/08-trend-report.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">08 <i data-lucide="trending-up" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Trend report</p>
+          <p class="text-xs text-body">Monthly sentiment mix, most-tagged aspects, a &gt;30%-negative alert, rating trend toward +0.3 stars.</p>
+        </a>
+        <a href="screens/09-prompt-library.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">09 <i data-lucide="library" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Prompt library &amp; accuracy audit</p>
+          <p class="text-xs text-body">Versioned prompt change log, weekly 20%-sample accuracy audit, "report a miscategorisation" flow.</p>
+        </a>
+        <a href="screens/10-settings.html" class="ft-card rounded-xl p-4 hover:border-brand/40 hover:shadow-md transition group">
+          <div class="flex items-center gap-2 text-xs font-semibold text-muted">10 <i data-lucide="settings" class="h-3.5 w-3.5 text-brandStrong"></i></div>
+          <p class="mt-1 font-semibold text-ink group-hover:text-brandStrong">Settings</p>
+          <p class="text-xs text-body">Locations, brand-voice tone controls, team &amp; roles, notifications, the locked "human approval required" toggle.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="border-t border-slate-200 pt-6 text-xs text-muted flex flex-wrap items-center justify-between gap-2">
+      <p>FreshTake — a clickable PRD-to-prototype mockup. No backend; everything runs locally from these files.</p>
+      <p>Source: "GenAI-Powered Review Categorization System" PRD · See README for traceability &amp; assumptions.</p>
+    </footer>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

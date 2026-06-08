@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Review detail — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-slate-200 px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-display font-bold text-ink">FreshTake</p><p class="text-[11px] text-muted">Harvest Kitchen · Riverside</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Workflow</p>
+      <a href="02-dashboard.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="layout-dashboard" class="ft-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-new-batch.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="upload" class="ft-nav-icon h-4 w-4"></i> New batch</a>
+      <a href="05-batch-results.html" class="ft-nav-link is-active flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="table-2" class="ft-nav-icon h-4 w-4"></i> Batch results</a>
+      <a href="07-action-queue.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="route" class="ft-nav-icon h-4 w-4"></i> Action queue <span class="ml-auto rounded-full bg-negative/10 px-1.5 py-0.5 text-[10px] font-semibold text-negative">3 open</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Insights</p>
+      <a href="08-trend-report.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="trending-up" class="ft-nav-icon h-4 w-4"></i> Trend report</a>
+      <a href="09-prompt-library.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="library" class="ft-nav-icon h-4 w-4"></i> Prompt library</a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Account</p>
+      <a href="10-settings.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="settings" class="ft-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-slate-200 p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted hover:bg-surfaceTint hover:text-body"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">MR</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-ink">Maria Reyes</p><p class="text-[11px] text-muted">General Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-slate-200 p-2 text-body hover:bg-surfaceTint lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="font-display text-lg font-semibold">Review detail — Cust2024-001</h1>
+        <p class="text-xs text-muted">Batch #042 · Story 3 · FR9 — human approval required before any reply is sent</p>
+      </div>
+    </div>
+    <a href="05-batch-results.html" class="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-body hover:bg-surfaceTint"><i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Back to results</a>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl ft-fade-in">
+
+      <!-- Edge-case callout (Cust2024-006) -->
+      <div class="mb-5 rounded-xl border border-info/30 bg-info/5 p-4 flex items-start gap-3">
+        <i data-lucide="flask-conical" class="mt-0.5 h-5 w-5 flex-shrink-0 text-info"></i>
+        <div class="flex-1">
+          <p class="text-sm font-semibold text-ink">How FreshTake handles short / ambiguous reviews</p>
+          <p class="mt-0.5 text-sm text-body">Reviews like Cust2024-006 ("Nice place" / "N/A") are too short to support specific aspect detail. Rather than guess, the engineered prompt intentionally returns <span class="font-semibold">Aspect Tags = N/A</span> — this is the validated hallucination-avoidance behaviour the team targets at a <span class="font-semibold">0% false-tag rate</span>. <a href="05-batch-results.html#cust2024-006" class="font-medium text-brandStrong hover:underline">See it in the results table →</a></p>
+        </div>
+      </div>
+
+      <div class="grid gap-5 lg:grid-cols-5">
+        <!-- Left: review + classification -->
+        <div class="lg:col-span-2 space-y-5">
+          <div class="ft-card rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">Original review</p>
+              <span class="inline-flex items-center gap-1 rounded-full bg-surfaceTint px-2 py-0.5 text-[11px] font-medium text-brandInk"><i data-lucide="star" class="h-3 w-3"></i> Yelp · 2★</span>
+            </div>
+            <blockquote class="mt-3 text-base leading-relaxed text-ink">"The pasta was incredible but our waiter forgot our order twice. We had to flag someone down both times, and by the time the second dish came out, the first one was cold."</blockquote>
+            <dl class="mt-4 grid grid-cols-2 gap-3 text-xs">
+              <div><dt class="text-muted">Customer ID</dt><dd class="font-mono font-medium text-ink">Cust2024-001</dd></div>
+              <div><dt class="text-muted">Date submitted</dt><dd class="font-medium text-ink">June 5, 2026</dd></div>
+              <div><dt class="text-muted">Source platform</dt><dd class="font-medium text-ink">Yelp</dd></div>
+              <div><dt class="text-muted">Location</dt><dd class="font-medium text-ink">Riverside</dd></div>
+            </dl>
+          </div>
+
+          <div class="ft-card rounded-2xl p-5 space-y-4">
+            <p class="text-xs font-semibold uppercase tracking-wide text-muted">Copilot AI classification</p>
+            <div>
+              <p class="text-xs text-muted mb-1.5">Sentiment category</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="pill badge-positive"><i data-lucide="smile" class="h-3 w-3"></i> Positive</span>
+                <span class="pill badge-negative"><i data-lucide="frown" class="h-3 w-3"></i> Negative</span>
+              </div>
+              <p class="mt-1.5 text-xs text-body">Mixed review — praises food quality, criticises service. FreshTake tags both rather than forcing a single label.</p>
+            </div>
+            <div>
+              <p class="text-xs text-muted mb-1.5">Aspect tags</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="chip chip-brand"><i data-lucide="utensils" class="h-3 w-3"></i> Food Quality</span>
+                <span class="chip chip-brand"><i data-lucide="concierge-bell" class="h-3 w-3"></i> Service</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-muted mb-1.5">Priority</p>
+              <span class="pill badge-high text-sm py-1.5 px-3"><i data-lucide="flame" class="h-3.5 w-3.5"></i> High</span>
+            </div>
+          </div>
+
+          <!-- Why this priority? -->
+          <div class="ft-card rounded-2xl p-5">
+            <p class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted"><i data-lucide="circle-help" class="h-3.5 w-3.5 text-brandStrong"></i> Why this priority?</p>
+            <ul class="mt-2 space-y-1.5 text-sm text-body">
+              <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-3.5 w-3.5 text-brandStrong flex-shrink-0"></i> A core <span class="font-medium text-ink">Service</span> failure was repeated twice in one visit — a pattern, not a one-off.</li>
+              <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-3.5 w-3.5 text-brandStrong flex-shrink-0"></i> Negative experience risks undoing genuine praise for <span class="font-medium text-ink">Food Quality</span> — a guest worth winning back.</li>
+              <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-3.5 w-3.5 text-brandStrong flex-shrink-0"></i> Public, detailed complaint on Yelp — business-impact criteria flag this as visible and actionable within 24h.</li>
+            </ul>
+            <p class="mt-3 text-xs text-muted">Priority reflects business impact, not just sentiment polarity — compare to Cust2024-004 ("ambiance was a bit quiet" → Neutral/Normal) vs. Cust2024-007 ("ambiance was terrifyingly unsafe" → Negative/High): same aspect, very different severity.</p>
+          </div>
+
+          <!-- Suggested action -->
+          <div class="ft-card rounded-2xl p-5">
+            <p class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted"><i data-lucide="clipboard-list" class="h-3.5 w-3.5 text-brandStrong"></i> Suggested action</p>
+            <p class="mt-2 text-sm text-ink">Brief kitchen team on order-accuracy during peak service; follow up directly with this guest.</p>
+            <button onclick="ftToast('Routed to the action queue — assigned to Front-of-House.', {icon:'route'})" data-modal-open="assign-modal" class="btn btn-secondary mt-3 text-xs py-1.5 px-3"><i data-lucide="route" class="h-3.5 w-3.5"></i> Send to action queue</button>
+          </div>
+        </div>
+
+        <!-- Right: reply editor -->
+        <div class="lg:col-span-3 space-y-5">
+          <div class="ft-card rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <p class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted"><i data-lucide="reply" class="h-3.5 w-3.5 text-brandStrong"></i> 1st reply — AI draft (editable)</p>
+              <span class="inline-flex items-center gap-1 rounded-full bg-brandSoft px-2 py-0.5 text-[11px] font-medium text-brandInk"><i data-lucide="sparkles" class="h-3 w-3"></i> Drafted by Copilot AI</span>
+            </div>
+            <label for="reply-text" class="sr-only">Edit the AI-drafted reply before sending</label>
+            <textarea id="reply-text" rows="7" class="mt-3 w-full rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-relaxed text-ink focus:border-brand focus:ring-2 focus:ring-brand/20 ft-focus">Hi there — thank you for taking the time to share this, and we're so glad the pasta hit the spot! That said, we're sorry your order was missed twice; that's not the service we hold ourselves to. I've shared this with our floor team so we can tighten up order-accuracy during busy hours. We'd love the chance to make it right — please reach out and we'll have a complimentary appetizer waiting for your next visit. 🌿</textarea>
+            <div class="mt-2 flex items-center justify-between text-xs text-muted">
+              <span><i data-lucide="pencil" class="inline h-3 w-3 align-text-bottom"></i> You can edit this draft freely — nothing sends until you approve it.</span>
+              <span id="char-count" class="font-mono">498 / 1000</span>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center gap-2.5">
+              <button onclick="ftToast('Generating a fresh draft from the engineered prompt…', {icon:'refresh-cw'})" class="btn btn-secondary"><i data-lucide="refresh-cw" class="h-4 w-4"></i> Regenerate draft</button>
+              <button data-modal-open="approve-modal" class="btn btn-primary ml-auto"><i data-lucide="send" class="h-4 w-4"></i> Approve &amp; send</button>
+            </div>
+          </div>
+
+          <!-- Sample reply patterns reference -->
+          <div class="ft-card rounded-2xl p-5">
+            <p class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted"><i data-lucide="book-open" class="h-3.5 w-3.5 text-brandStrong"></i> Reply patterns the prompt follows</p>
+            <div class="mt-3 grid gap-2.5 sm:grid-cols-3 text-xs">
+              <div class="rounded-xl bg-positive/5 border border-positive/20 p-3">
+                <p class="font-semibold text-positive">Positive → gratitude + invite</p>
+                <p class="mt-1 text-body">"Thank you for your kind words! We can't wait to welcome you back 🌿"</p>
+              </div>
+              <div class="rounded-xl bg-negative/5 border border-negative/20 p-3">
+                <p class="font-semibold text-negative">Negative → apology + fix</p>
+                <p class="mt-1 text-body">"We're sorry to hear about your experience with [aspect]. We'll review our [process] and offer a complimentary [item]."</p>
+              </div>
+              <div class="rounded-xl bg-neutral/5 border border-neutral/20 p-3">
+                <p class="font-semibold text-neutral">Neutral → acknowledge + improve</p>
+                <p class="mt-1 text-body">Acknowledgement + "we're working on [improvement]" — keeps the door open without overpromising.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity / approval trail -->
+          <div class="ft-card rounded-2xl p-5">
+            <p class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted"><i data-lucide="history" class="h-3.5 w-3.5 text-brandStrong"></i> Activity</p>
+            <ul class="mt-3 space-y-2.5 text-sm">
+              <li class="flex items-start gap-2.5"><i data-lucide="sparkles" class="mt-0.5 h-3.5 w-3.5 text-brandStrong flex-shrink-0"></i><span class="text-body"><span class="font-medium text-ink">Copilot AI</span> drafted the first reply — Jun 6, 8:14 AM</span></li>
+              <li class="flex items-start gap-2.5"><i data-lucide="eye" class="mt-0.5 h-3.5 w-3.5 text-info flex-shrink-0"></i><span class="text-body"><span class="font-medium text-ink">Maria Reyes</span> opened this review for review — Jun 6, 9:02 AM</span></li>
+              <li class="flex items-start gap-2.5 opacity-50"><i data-lucide="circle-dashed" class="mt-0.5 h-3.5 w-3.5 text-muted flex-shrink-0"></i><span class="text-body">Awaiting your approval before this reply can be sent (FR9 — no automated send)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Approve & send modal -->
+  <div id="approve-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
+    <div class="ft-card w-full max-w-md rounded-2xl p-6">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brandSoft text-brandStrong"><i data-lucide="send" class="h-5 w-5"></i></div>
+        <div>
+          <h2 class="font-display text-lg font-bold text-ink">Send this reply to Cust2024-001?</h2>
+          <p class="text-xs text-muted">This is a human-approved send — FreshTake never sends automatically (FR9).</p>
+        </div>
+      </div>
+      <div class="mt-4 rounded-xl bg-surfaceTint p-3.5 text-sm text-body max-h-40 overflow-y-auto">
+        "Hi there — thank you for taking the time to share this, and we're so glad the pasta hit the spot! …"
+      </div>
+      <label class="mt-4 flex items-start gap-2.5 text-sm text-body">
+        <input type="checkbox" checked class="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand/30 ft-focus" />
+        I've reviewed this reply and approve it for sending on behalf of Harvest Kitchen — Riverside.
+      </label>
+      <div class="mt-5 flex items-center justify-end gap-2.5">
+        <button data-modal-close class="btn btn-ghost">Cancel</button>
+        <button data-modal-close onclick="ftToast('Reply approved and sent to Cust2024-001 🌿 — logged to the activity trail.', {icon:'send'})" class="btn btn-primary"><i data-lucide="send" class="h-4 w-4"></i> Approve &amp; send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assign to action queue modal -->
+  <div id="assign-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
+    <div class="ft-card w-full max-w-md rounded-2xl p-6">
+      <h2 class="font-display text-lg font-bold text-ink">Assign suggested action</h2>
+      <p class="text-xs text-muted mt-0.5">Routes this High-priority item into the action queue for follow-up tracking (Story 2).</p>
+      <div class="mt-4 space-y-3">
+        <div>
+          <label for="assign-dept" class="block text-sm font-medium text-ink mb-1.5">Department</label>
+          <select id="assign-dept" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-ink focus:border-brand focus:ring-2 focus:ring-brand/20 ft-focus">
+            <option>Front-of-House</option>
+            <option>Kitchen</option>
+            <option>Management</option>
+          </select>
+        </div>
+        <div>
+          <label for="assign-note" class="block text-sm font-medium text-ink mb-1.5">Note (optional)</label>
+          <textarea id="assign-note" rows="3" class="w-full rounded-xl border border-slate-200 bg-white p-3 text-sm text-ink focus:border-brand focus:ring-2 focus:ring-brand/20 ft-focus" placeholder="e.g. Discuss at Monday's team huddle">Brief team on order-accuracy during peak service — repeat issue this week.</textarea>
+        </div>
+      </div>
+      <div class="mt-5 flex items-center justify-end gap-2.5">
+        <button data-modal-close class="btn btn-ghost">Cancel</button>
+        <button data-modal-close onclick="ftToast('Action logged to the queue — assigned to Front-of-House, status: Open.', {icon:'route'})" class="btn btn-primary"><i data-lucide="route" class="h-4 w-4"></i> Log &amp; assign</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+  <script>
+    const replyText = document.getElementById('reply-text');
+    const charCount = document.getElementById('char-count');
+    const updateCount = () => { charCount.textContent = `${replyText.value.length} / 1000`; };
+    replyText.addEventListener('input', updateCount);
+    updateCount();
+  </script>
+</body>
+</html>

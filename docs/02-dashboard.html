@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-slate-200 px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-display font-bold text-ink">FreshTake</p><p class="text-[11px] text-muted">Harvest Kitchen · Riverside</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Workflow</p>
+      <a href="02-dashboard.html" class="ft-nav-link is-active flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="layout-dashboard" class="ft-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-new-batch.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="upload" class="ft-nav-icon h-4 w-4"></i> New batch</a>
+      <a href="05-batch-results.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="table-2" class="ft-nav-icon h-4 w-4"></i> Batch results</a>
+      <a href="07-action-queue.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="route" class="ft-nav-icon h-4 w-4"></i> Action queue <span class="ml-auto rounded-full bg-negative/10 px-1.5 py-0.5 text-[10px] font-semibold text-negative">3 open</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Insights</p>
+      <a href="08-trend-report.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="trending-up" class="ft-nav-icon h-4 w-4"></i> Trend report</a>
+      <a href="09-prompt-library.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="library" class="ft-nav-icon h-4 w-4"></i> Prompt library</a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Account</p>
+      <a href="10-settings.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="settings" class="ft-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-slate-200 p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted hover:bg-surfaceTint hover:text-body"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">MR</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-ink">Maria Reyes</p><p class="text-[11px] text-muted">General Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-slate-200 p-2 text-body hover:bg-surfaceTint lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="font-display text-lg font-semibold">Good morning, Maria</h1>
+        <p class="text-xs text-muted">Saturday, June 6 · Riverside location · Week 23 snapshot</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button data-toggle-target="empty-state" class="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-body hover:bg-surfaceTint">
+        <i data-lucide="flask-conical" class="h-3.5 w-3.5 text-brandStrong"></i> Toggle first-run view
+      </button>
+      <a href="03-new-batch.html" class="btn btn-primary"><i data-lucide="plus" class="h-4 w-4"></i> <span class="hidden sm:inline">New batch</span></a>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl space-y-6">
+
+      <!-- ============ RETURNING / POPULATED STATE ============ -->
+      <div id="populated-state" class="space-y-6 ft-fade-in">
+
+        <!-- North Star + KPI row -->
+        <div class="grid gap-4 lg:grid-cols-5">
+          <div class="ft-card rounded-2xl p-5 lg:col-span-2 bg-gradient-to-br from-brand to-brandStrong text-white">
+            <p class="flex items-center gap-1.5 text-xs text-white/80"><i data-lucide="target" class="h-3.5 w-3.5"></i> North Star · replies sent within 24h</p>
+            <p class="mt-2 font-display text-3xl font-bold">71%</p>
+            <div class="ft-meter mt-3 bg-white/20"><span style="width:71%; background:#fff"></span></div>
+            <p class="mt-2 text-xs text-white/80">Target ≥ 90% · baseline was &lt; 30% before FreshTake. <span class="font-semibold">+41 pts</span> since pilot start.</p>
+          </div>
+          <div class="ft-card rounded-2xl p-4">
+            <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="inbox" class="h-3.5 w-3.5 text-brandStrong"></i> Reviews this week</p>
+            <p class="mt-2 text-2xl font-display font-bold">128</p>
+            <p class="mt-1 text-xs text-positive">↑ 18 vs. last week</p>
+          </div>
+          <div class="ft-card rounded-2xl p-4">
+            <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="flag" class="h-3.5 w-3.5 text-negative"></i> High-priority open</p>
+            <p class="mt-2 text-2xl font-display font-bold">3</p>
+            <p class="mt-1 text-xs text-muted">2 awaiting reply · 1 in queue</p>
+          </div>
+          <div class="ft-card rounded-2xl p-4">
+            <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="timer" class="h-3.5 w-3.5 text-info"></i> Avg. time saved / reply</p>
+            <p class="mt-2 text-2xl font-display font-bold">7.2 min</p>
+            <p class="mt-1 text-xs text-muted">vs. 5–10 min manual baseline</p>
+          </div>
+        </div>
+
+        <!-- Pending batch CTA + sparkline -->
+        <div class="grid gap-4 lg:grid-cols-5">
+          <div class="ft-card rounded-2xl p-5 lg:col-span-2 flex flex-col justify-between bg-surfaceTint border-brand/20">
+            <div>
+              <p class="flex items-center gap-1.5 text-xs font-semibold text-brandInk"><i data-lucide="sparkles" class="h-3.5 w-3.5"></i> Ready when you are</p>
+              <p class="mt-2 font-display text-lg font-semibold text-ink">12 new reviews are waiting to be processed</p>
+              <p class="mt-1 text-sm text-body">Submit them as a batch and Copilot AI will return the structured table — sentiment, tags, priority, suggested action and a draft reply — in under 30 seconds.</p>
+            </div>
+            <a href="03-new-batch.html" class="btn btn-primary mt-4 self-start"><i data-lucide="upload" class="h-4 w-4"></i> Start new batch</a>
+          </div>
+          <div class="ft-card rounded-2xl p-5 lg:col-span-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-semibold">Response-rate trend — last 8 weeks</p>
+                <p class="text-xs text-muted">% of reviews replied to within 24 hours</p>
+              </div>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-positive/10 px-2.5 py-1 text-xs font-medium text-positive"><i data-lucide="trending-up" class="h-3 w-3"></i> Trending up</span>
+            </div>
+            <div class="mt-6 flex h-36 items-end gap-3 px-1">
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand/30" style="height:28%"></div><span class="text-[11px] text-muted">W17</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand/30" style="height:33%"></div><span class="text-[11px] text-muted">W18</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand/40" style="height:42%"></div><span class="text-[11px] text-muted">W19</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand/50" style="height:51%"></div><span class="text-[11px] text-muted">W20</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand/60" style="height:58%"></div><span class="text-[11px] text-muted">W21</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand/70" style="height:64%"></div><span class="text-[11px] text-muted">W22</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2"><div class="ft-bar w-full rounded-t-md bg-brand" style="height:71%"></div><span class="text-[11px] font-medium text-brandStrong">W23</span></div>
+              <div class="flex flex-1 flex-col items-center gap-2 opacity-40"><div class="w-full rounded-t-md border-2 border-dashed border-brand" style="height:90%"></div><span class="text-[11px] text-muted">Target</span></div>
+            </div>
+            <p class="mt-3 text-xs text-muted">Rolling 8-week climb from <span class="font-semibold text-ink">28%</span> to <span class="font-semibold text-brandStrong">71%</span> — on pace to clear the 90% target by Q4.</p>
+          </div>
+        </div>
+
+        <!-- High priority queue summary + recent batches -->
+        <div class="grid gap-4 lg:grid-cols-5">
+          <div class="ft-card rounded-2xl p-5 lg:col-span-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-semibold">High-priority queue — needs attention</p>
+                <p class="text-xs text-muted">Sorted by urgency · from the last 3 batches</p>
+              </div>
+              <a href="07-action-queue.html" class="text-xs font-medium text-brandStrong hover:underline">Open full queue →</a>
+            </div>
+            <ul class="mt-4 divide-y divide-slate-100">
+              <li class="flex items-center gap-3 py-3">
+                <span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High</span>
+                <div class="flex-1 min-w-0">
+                  <p class="truncate text-sm text-ink">"I found a hair in my food — and the manager barely apologized."</p>
+                  <p class="text-xs text-muted">Cust2024-003 · Google · Health/safety flag</p>
+                </div>
+                <a href="06-review-detail.html" class="rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-body hover:bg-surfaceTint">Open →</a>
+              </li>
+              <li class="flex items-center gap-3 py-3">
+                <span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High</span>
+                <div class="flex-1 min-w-0">
+                  <p class="truncate text-sm text-ink">"The pasta was incredible but our waiter forgot our order twice."</p>
+                  <p class="text-xs text-muted">Cust2024-001 · Yelp · Service failure</p>
+                </div>
+                <a href="06-review-detail.html" class="rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-body hover:bg-surfaceTint">Open →</a>
+              </li>
+              <li class="flex items-center gap-3 py-3">
+                <span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High</span>
+                <div class="flex-1 min-w-0">
+                  <p class="truncate text-sm text-ink">"The ambiance was terrifyingly unsafe — exposed wiring near our table."</p>
+                  <p class="text-xs text-muted">Cust2024-007 · TripAdvisor · Safety flag</p>
+                </div>
+                <a href="06-review-detail.html" class="rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-body hover:bg-surfaceTint">Open →</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="ft-card rounded-2xl p-5 lg:col-span-2">
+            <p class="text-sm font-semibold">Recent batches</p>
+            <p class="text-xs text-muted">Processed by Copilot AI this week</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-center gap-3 rounded-xl border border-slate-100 p-3 hover:bg-surfaceTint">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brandSoft text-brandStrong"><i data-lucide="table-2" class="h-4 w-4"></i></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-ink">Batch #042 · 14 reviews</p>
+                  <p class="text-xs text-muted">Processed Jun 6, 8:14 AM · 27s</p>
+                </div>
+                <a href="05-batch-results.html" class="text-xs font-medium text-brandStrong hover:underline">View →</a>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-100 p-3 hover:bg-surfaceTint">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brandSoft text-brandStrong"><i data-lucide="table-2" class="h-4 w-4"></i></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-ink">Batch #041 · 10 reviews</p>
+                  <p class="text-xs text-muted">Processed Jun 4, 5:46 PM · 22s</p>
+                </div>
+                <a href="05-batch-results.html" class="text-xs font-medium text-brandStrong hover:underline">View →</a>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-100 p-3 hover:bg-surfaceTint">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brandSoft text-brandStrong"><i data-lucide="table-2" class="h-4 w-4"></i></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-ink">Batch #040 · 18 reviews</p>
+                  <p class="text-xs text-muted">Processed Jun 2, 9:03 AM · 29s</p>
+                </div>
+                <a href="05-batch-results.html" class="text-xs font-medium text-brandStrong hover:underline">View →</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FIRST-RUN / EMPTY STATE ============ -->
+      <div id="empty-state" class="hidden ft-fade-in">
+        <div class="ft-card rounded-2xl p-10 text-center max-w-2xl mx-auto">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brandSoft text-brandStrong">
+            <i data-lucide="sprout" class="h-8 w-8"></i>
+          </div>
+          <h2 class="mt-4 font-display text-xl font-bold text-ink">Welcome to FreshTake, Maria</h2>
+          <p class="mt-2 text-sm text-body max-w-md mx-auto">
+            You haven't processed a review batch yet. Paste in your latest Google, Yelp or TripAdvisor reviews — or upload a CSV —
+            and Copilot AI will sort them into sentiment, priority and suggested actions in one pass.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a href="03-new-batch.html" class="btn btn-primary"><i data-lucide="upload" class="h-4 w-4"></i> Submit your first batch</a>
+            <a href="05-batch-results.html" class="btn btn-secondary"><i data-lucide="eye" class="h-4 w-4"></i> See a sample result</a>
+          </div>
+          <div class="mt-8 grid gap-3 text-left sm:grid-cols-3">
+            <div class="rounded-xl bg-surfaceTint p-3">
+              <p class="flex items-center gap-1.5 text-xs font-semibold text-brandInk"><i data-lucide="check" class="h-3.5 w-3.5"></i> Step 1</p>
+              <p class="mt-1 text-xs text-body">Paste at least 10 reviews, or connect a review platform.</p>
+            </div>
+            <div class="rounded-xl bg-surfaceTint p-3">
+              <p class="flex items-center gap-1.5 text-xs font-semibold text-brandInk"><i data-lucide="check" class="h-3.5 w-3.5"></i> Step 2</p>
+              <p class="mt-1 text-xs text-body">Copilot AI returns a structured table in under 30 seconds.</p>
+            </div>
+            <div class="rounded-xl bg-surfaceTint p-3">
+              <p class="flex items-center gap-1.5 text-xs font-semibold text-brandInk"><i data-lucide="check" class="h-3.5 w-3.5"></i> Step 3</p>
+              <p class="mt-1 text-xs text-body">You review, personalise and approve every reply before it sends.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+  <script>
+    document.querySelector('[data-toggle-target="empty-state"]').addEventListener('click', () => {
+      document.getElementById('populated-state').classList.toggle('hidden');
+      const isEmpty = !document.getElementById('empty-state').classList.contains('hidden');
+      ftToast(isEmpty ? 'Showing the returning-user dashboard' : 'Showing the first-run empty state', { icon: 'flask-conical' });
+    });
+  </script>
+</body>
+</html>

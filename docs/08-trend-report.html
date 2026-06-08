@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trend report — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-slate-200 px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-display font-bold text-ink">FreshTake</p><p class="text-[11px] text-muted">Harvest Kitchen · Regional view</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Workflow</p>
+      <a href="02-dashboard.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="layout-dashboard" class="ft-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-new-batch.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="upload" class="ft-nav-icon h-4 w-4"></i> New batch</a>
+      <a href="05-batch-results.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="table-2" class="ft-nav-icon h-4 w-4"></i> Batch results</a>
+      <a href="07-action-queue.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="route" class="ft-nav-icon h-4 w-4"></i> Action queue <span class="ml-auto rounded-full bg-negative/10 px-1.5 py-0.5 text-[10px] font-semibold text-negative">3 open</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Insights</p>
+      <a href="08-trend-report.html" class="ft-nav-link is-active flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="trending-up" class="ft-nav-icon h-4 w-4"></i> Trend report</a>
+      <a href="09-prompt-library.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="library" class="ft-nav-icon h-4 w-4"></i> Prompt library</a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Account</p>
+      <a href="10-settings.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="settings" class="ft-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-slate-200 p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted hover:bg-surfaceTint hover:text-body"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">DO</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-ink">Dana Okafor</p><p class="text-[11px] text-muted">Regional Ops Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-slate-200 p-2 text-body hover:bg-surfaceTint lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="font-display text-lg font-semibold">Monthly trend report</h1>
+        <p class="text-xs text-muted">Flow 5 · P2 / V2 · §3.6 — sentiment mix, aspect frequency, and early-warning alerts across 12 locations</p>
+      </div>
+    </div>
+    <div class="hidden sm:flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-body">
+      <i data-lucide="calendar" class="h-3.5 w-3.5 text-muted"></i> May 2026 <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-muted"></i>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-6xl space-y-5 ft-fade-in">
+
+      <!-- Alert banner: negative > 30% -->
+      <div class="rounded-xl border border-negative/30 bg-negative/5 p-4 flex items-start gap-3">
+        <i data-lucide="alert-triangle" class="mt-0.5 h-5 w-5 flex-shrink-0 text-negative"></i>
+        <div class="flex-1">
+          <p class="text-sm font-semibold text-ink">Negative reviews crossed the 30% threshold this month</p>
+          <p class="mt-0.5 text-sm text-body">Negative sentiment reached <span class="font-mono font-semibold text-negative">33%</span> of May's volume — above the §3.6 alert threshold of &gt; 30%. Service and Food Quality are the most-cited aspects behind the rise. <a href="07-action-queue.html" class="font-medium text-negative hover:underline">Review the action queue →</a></p>
+        </div>
+        <button class="flex-shrink-0 rounded-lg p-1 text-negative hover:bg-negative/10" onclick="this.closest('div.rounded-xl').remove()" aria-label="Dismiss alert"><i data-lucide="x" class="h-4 w-4"></i></button>
+      </div>
+
+      <!-- Sentiment mix chart -->
+      <div class="ft-card rounded-2xl p-5">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <p class="text-sm font-semibold">Sentiment mix — last 6 months</p>
+            <p class="text-xs text-muted">% of reviews categorised Positive / Negative / Neutral, by month</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs">
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-positive"></span> Positive</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-negative"></span> Negative</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-neutral"></span> Neutral</span>
+          </div>
+        </div>
+        <div class="mt-6 flex h-56 items-end gap-4 px-1">
+          <!-- Each month: stacked bar (simple divs, no chart lib) -->
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flex w-full flex-col-reverse rounded-t-md overflow-hidden" style="height:88%">
+              <div class="ft-bar bg-neutral" style="height:18%"></div>
+              <div class="ft-bar bg-negative" style="height:24%"></div>
+              <div class="ft-bar bg-positive" style="height:58%"></div>
+            </div>
+            <span class="text-[11px] text-muted">Dec</span>
+          </div>
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flex w-full flex-col-reverse rounded-t-md overflow-hidden" style="height:88%">
+              <div class="ft-bar bg-neutral" style="height:17%"></div>
+              <div class="ft-bar bg-negative" style="height:25%"></div>
+              <div class="ft-bar bg-positive" style="height:58%"></div>
+            </div>
+            <span class="text-[11px] text-muted">Jan</span>
+          </div>
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flex w-full flex-col-reverse rounded-t-md overflow-hidden" style="height:88%">
+              <div class="ft-bar bg-neutral" style="height:19%"></div>
+              <div class="ft-bar bg-negative" style="height:27%"></div>
+              <div class="ft-bar bg-positive" style="height:54%"></div>
+            </div>
+            <span class="text-[11px] text-muted">Feb</span>
+          </div>
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flex w-full flex-col-reverse rounded-t-md overflow-hidden" style="height:88%">
+              <div class="ft-bar bg-neutral" style="height:18%"></div>
+              <div class="ft-bar bg-negative" style="height:26%"></div>
+              <div class="ft-bar bg-positive" style="height:56%"></div>
+            </div>
+            <span class="text-[11px] text-muted">Mar</span>
+          </div>
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flex w-full flex-col-reverse rounded-t-md overflow-hidden" style="height:88%">
+              <div class="ft-bar bg-neutral" style="height:17%"></div>
+              <div class="ft-bar bg-negative" style="height:29%"></div>
+              <div class="ft-bar bg-positive" style="height:54%"></div>
+            </div>
+            <span class="text-[11px] text-muted">Apr</span>
+          </div>
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div class="flex w-full flex-col-reverse rounded-t-md overflow-hidden ring-2 ring-negative/40" style="height:92%">
+              <div class="ft-bar bg-neutral" style="height:16%"></div>
+              <div class="ft-bar bg-negative" style="height:33%"></div>
+              <div class="ft-bar bg-positive" style="height:51%"></div>
+            </div>
+            <span class="text-[11px] font-semibold text-negative">May ⚠</span>
+          </div>
+        </div>
+        <p class="mt-3 text-xs text-muted">May: <span class="font-semibold text-positive">51% positive</span> · <span class="font-semibold text-negative">33% negative</span> (crossed alert threshold) · <span class="font-semibold text-neutral">16% neutral</span> — based on 412 categorised reviews across 12 locations.</p>
+      </div>
+
+      <div class="grid gap-5 lg:grid-cols-5">
+        <!-- Most-tagged aspects -->
+        <div class="ft-card rounded-2xl p-5 lg:col-span-2">
+          <p class="text-sm font-semibold">Most-tagged aspects — May</p>
+          <p class="text-xs text-muted">Ranked by frequency across all categorised reviews</p>
+          <ul class="mt-4 space-y-2.5">
+            <li class="flex items-center gap-3"><span class="w-28 text-xs text-body">Service</span><div class="ft-meter flex-1"><span style="width:100%; background:var(--negative)"></span></div><span class="w-10 text-right font-mono text-xs text-muted">182</span></li>
+            <li class="flex items-center gap-3"><span class="w-28 text-xs text-body">Food Quality</span><div class="ft-meter flex-1"><span style="width:88%; background:var(--brand)"></span></div><span class="w-10 text-right font-mono text-xs text-muted">160</span></li>
+            <li class="flex items-center gap-3"><span class="w-28 text-xs text-body">Overall Experience</span><div class="ft-meter flex-1"><span style="width:54%; background:var(--info)"></span></div><span class="w-10 text-right font-mono text-xs text-muted">98</span></li>
+            <li class="flex items-center gap-3"><span class="w-28 text-xs text-body">Ambiance</span><div class="ft-meter flex-1"><span style="width:39%; background:var(--neutral)"></span></div><span class="w-10 text-right font-mono text-xs text-muted">71</span></li>
+            <li class="flex items-center gap-3"><span class="w-28 text-xs text-body">Price</span><div class="ft-meter flex-1"><span style="width:24%; background:var(--muted)"></span></div><span class="w-10 text-right font-mono text-xs text-muted">44</span></li>
+          </ul>
+          <p class="mt-4 text-xs text-muted">Service overtook Food Quality as the top-tagged aspect for the first time this quarter — mirrors the wait-time and order-accuracy complaints surfaced in recent batches.</p>
+        </div>
+
+        <!-- Rating trend toward +0.3 -->
+        <div class="ft-card rounded-2xl p-5 lg:col-span-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold">Average review rating — trend toward +0.3★ target</p>
+              <p class="text-xs text-muted">PRD §1 target: +0.3 stars within 6 months of FreshTake adoption</p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-positive/10 px-2.5 py-1 text-xs font-medium text-positive"><i data-lucide="trending-up" class="h-3 w-3"></i> +0.18★ so far</span>
+          </div>
+          <svg viewBox="0 0 320 120" class="mt-5 w-full h-32" role="img" aria-label="Line chart showing average review rating climbing from 3.92 stars in December to 4.10 stars in May, on pace toward a 4.22-star target">
+            <polyline points="10,86 60,80 110,74 160,66 210,58 260,46" fill="none" stroke="#0d9488" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <polyline points="260,46 310,34" fill="none" stroke="#0d9488" stroke-width="3" stroke-dasharray="5 5" stroke-linecap="round" />
+            <circle cx="260" cy="46" r="4" fill="#0d9488" />
+            <circle cx="310" cy="34" r="4" fill="#ccfbf1" stroke="#0d9488" stroke-width="2" />
+            <line x1="0" y1="34" x2="320" y2="34" stroke="#fda4af" stroke-width="1.5" stroke-dasharray="4 4" />
+          </svg>
+          <div class="flex items-center justify-between text-xs text-muted px-1">
+            <span>Dec · 3.92★</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span class="font-semibold text-brandStrong">May · 4.10★</span><span class="text-negative">Target · 4.22★</span>
+          </div>
+          <p class="mt-4 text-xs text-muted">Trending from <span class="font-semibold text-ink">3.92★</span> in December to <span class="font-semibold text-brandStrong">4.10★</span> in May — a <span class="font-semibold text-positive">+0.18★</span> gain so far, on pace to meet or exceed the +0.3★ target by the 6-month mark.</p>
+        </div>
+      </div>
+
+      <!-- Location comparison -->
+      <div class="ft-card rounded-2xl p-5">
+        <p class="text-sm font-semibold">Sentiment by location — May</p>
+        <p class="text-xs text-muted">Helps Dana calibrate priority judgement consistently across the region</p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-left text-xs font-semibold uppercase tracking-wide text-muted border-b border-slate-200">
+                <th class="py-2 pr-4">Location</th>
+                <th class="py-2 pr-4">Reviews</th>
+                <th class="py-2 pr-4">% Positive</th>
+                <th class="py-2 pr-4">% Negative</th>
+                <th class="py-2 pr-4">High-priority items</th>
+                <th class="py-2">Avg. rating</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-surfaceTint/60">
+                <td class="py-2.5 pr-4 font-medium text-ink">Riverside</td>
+                <td class="py-2.5 pr-4 text-body">128</td>
+                <td class="py-2.5 pr-4 text-positive font-medium">54%</td>
+                <td class="py-2.5 pr-4 text-negative font-medium">29%</td>
+                <td class="py-2.5 pr-4 text-body">3</td>
+                <td class="py-2.5 text-body">4.2★</td>
+              </tr>
+              <tr class="hover:bg-surfaceTint/60">
+                <td class="py-2.5 pr-4 font-medium text-ink">Midtown</td>
+                <td class="py-2.5 pr-4 text-body">156</td>
+                <td class="py-2.5 pr-4 text-positive font-medium">47%</td>
+                <td class="py-2.5 pr-4 text-negative font-medium">38%</td>
+                <td class="py-2.5 pr-4 text-body">7</td>
+                <td class="py-2.5 text-body">3.8★</td>
+              </tr>
+              <tr class="hover:bg-surfaceTint/60">
+                <td class="py-2.5 pr-4 font-medium text-ink">Brookfield Heights</td>
+                <td class="py-2.5 pr-4 text-body">128</td>
+                <td class="py-2.5 pr-4 text-positive font-medium">53%</td>
+                <td class="py-2.5 pr-4 text-negative font-medium">31%</td>
+                <td class="py-2.5 pr-4 text-body">4</td>
+                <td class="py-2.5 text-body">4.1★</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-muted">Midtown is driving most of this month's negative-review spike — Dana has flagged it for a focused service-process review with that GM.</p>
+      </div>
+
+      <div class="text-center">
+        <a href="09-prompt-library.html" class="text-sm font-medium text-brandStrong hover:underline inline-flex items-center gap-1.5">See whether the prompt is keeping pace with these trends <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

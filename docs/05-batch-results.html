@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Batch results — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <!-- Sidebar -->
+  <aside data-sidebar class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform -translate-x-full lg:translate-x-0">
+    <div class="flex h-16 items-center gap-2.5 border-b border-slate-200 px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+      <div class="leading-tight"><p class="text-sm font-display font-bold text-ink">FreshTake</p><p class="text-[11px] text-muted">Harvest Kitchen · Riverside</p></div>
+    </div>
+    <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+      <p class="px-3 pb-1.5 pt-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Workflow</p>
+      <a href="02-dashboard.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="layout-dashboard" class="ft-nav-icon h-4 w-4"></i> Dashboard</a>
+      <a href="03-new-batch.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="upload" class="ft-nav-icon h-4 w-4"></i> New batch</a>
+      <a href="05-batch-results.html" class="ft-nav-link is-active flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="table-2" class="ft-nav-icon h-4 w-4"></i> Batch results</a>
+      <a href="07-action-queue.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="route" class="ft-nav-icon h-4 w-4"></i> Action queue <span class="ml-auto rounded-full bg-negative/10 px-1.5 py-0.5 text-[10px] font-semibold text-negative">3 open</span></a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Insights</p>
+      <a href="08-trend-report.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="trending-up" class="ft-nav-icon h-4 w-4"></i> Trend report</a>
+      <a href="09-prompt-library.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="library" class="ft-nav-icon h-4 w-4"></i> Prompt library</a>
+      <p class="px-3 pb-1.5 pt-4 text-[11px] font-semibold uppercase tracking-wider text-muted">Account</p>
+      <a href="10-settings.html" class="ft-nav-link flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-body hover:bg-surfaceTint hover:text-ink"><i data-lucide="settings" class="ft-nav-icon h-4 w-4"></i> Settings</a>
+    </nav>
+    <div class="border-t border-slate-200 p-3">
+      <a href="../index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted hover:bg-surfaceTint hover:text-body"><i data-lucide="layout-grid" class="h-3.5 w-3.5"></i> Back to mockup hub</a>
+      <div class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-brandSoft text-xs font-semibold text-brandInk">MR</div>
+        <div class="leading-tight"><p class="text-xs font-medium text-ink">Maria Reyes</p><p class="text-[11px] text-muted">General Manager</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-6 backdrop-blur lg:pl-72">
+    <div class="flex items-center gap-3">
+      <button data-nav-toggle class="rounded-lg border border-slate-200 p-2 text-body hover:bg-surfaceTint lg:hidden"><i data-lucide="menu" class="h-4 w-4"></i></button>
+      <div>
+        <h1 class="font-display text-lg font-semibold">Batch #042 results</h1>
+        <p class="text-xs text-muted">Processed Jun 6, 8:14 AM · 14 reviews · completed in 27s <span class="inline-flex items-center gap-1 ml-1 rounded-full bg-positive/10 px-1.5 py-0.5 text-[10px] font-semibold text-positive"><i data-lucide="zap" class="h-2.5 w-2.5"></i> under 30s target</span></p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="ftToast('Batch exported as harvest-kitchen_batch-042.csv', {icon:'download'})" class="btn btn-secondary"><i data-lucide="download" class="h-4 w-4"></i> <span class="hidden sm:inline">Export CSV</span></button>
+      <button onclick="ftToast('Batch exported as harvest-kitchen_batch-042.xlsx', {icon:'file-spreadsheet'})" class="btn btn-secondary"><i data-lucide="file-spreadsheet" class="h-4 w-4"></i> <span class="hidden sm:inline">Export Excel</span></button>
+      <a href="03-new-batch.html" class="btn btn-primary"><i data-lucide="plus" class="h-4 w-4"></i> <span class="hidden sm:inline">New batch</span></a>
+    </div>
+  </header>
+
+  <main class="px-6 py-6 lg:pl-72">
+    <div class="mx-auto max-w-7xl space-y-5 ft-fade-in">
+
+      <!-- Summary strip -->
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div class="ft-card rounded-xl p-3.5">
+          <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="smile" class="h-3.5 w-3.5 text-positive"></i> Positive</p>
+          <p class="mt-1 text-xl font-display font-bold text-positive">6</p>
+        </div>
+        <div class="ft-card rounded-xl p-3.5">
+          <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="frown" class="h-3.5 w-3.5 text-negative"></i> Negative</p>
+          <p class="mt-1 text-xl font-display font-bold text-negative">5</p>
+        </div>
+        <div class="ft-card rounded-xl p-3.5">
+          <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="meh" class="h-3.5 w-3.5 text-neutral"></i> Neutral</p>
+          <p class="mt-1 text-xl font-display font-bold text-neutral">3</p>
+        </div>
+        <div class="ft-card rounded-xl p-3.5">
+          <p class="flex items-center gap-1.5 text-xs text-body"><i data-lucide="flame" class="h-3.5 w-3.5 text-negative"></i> High priority</p>
+          <p class="mt-1 text-xl font-display font-bold text-ink">3 <span class="text-xs font-normal text-muted">— shown first</span></p>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="ft-card rounded-2xl p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-semibold text-muted uppercase tracking-wide mr-1">Priority</span>
+          <div data-filter-group="priority" class="flex flex-wrap gap-1.5" >
+            <button data-filter-value="all" class="is-active rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">All</button>
+            <button data-filter-value="high" class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">High</button>
+            <button data-filter-value="normal" class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">Normal</button>
+            <button data-filter-value="low" class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">Low</button>
+          </div>
+          <span class="text-xs font-semibold text-muted uppercase tracking-wide ml-3 mr-1">Sentiment</span>
+          <div data-filter-group="sentiment" class="flex flex-wrap gap-1.5">
+            <button data-filter-value="all" class="is-active rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">All</button>
+            <button data-filter-value="positive" class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">Positive</button>
+            <button data-filter-value="negative" class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">Negative</button>
+            <button data-filter-value="neutral" class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-body [&.is-active]:border-brand [&.is-active]:bg-brandSoft [&.is-active]:text-brandInk hover:bg-surfaceTint">Neutral</button>
+          </div>
+        </div>
+        <p class="text-xs text-muted inline-flex items-center gap-1.5"><i data-lucide="mouse-pointer-click" class="h-3.5 w-3.5"></i> Click any row to open the full review &amp; reply editor · click column headers to sort</p>
+      </div>
+
+      <!-- The 5-column table -->
+      <div class="ft-card rounded-2xl overflow-hidden" data-filter-scope="priority" data-filter-scope-2="sentiment">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm" data-sortable-table>
+            <thead class="bg-surfaceTint/70 border-b border-slate-200">
+              <tr class="text-left text-xs font-semibold uppercase tracking-wide text-brandInk">
+                <th class="px-4 py-3 min-w-[220px]">Review</th>
+                <th class="px-4 py-3 cursor-pointer select-none hover:text-brandStrong" data-sort-key="sentiment"><span class="inline-flex items-center gap-1">Sentiment <i data-lucide="arrow-up-down" class="h-3 w-3"></i></span></th>
+                <th class="px-4 py-3 min-w-[170px]">Aspect tags</th>
+                <th class="px-4 py-3 cursor-pointer select-none hover:text-brandStrong" data-sort-key="priority"><span class="inline-flex items-center gap-1">Priority <i data-lucide="arrow-up-down" class="h-3 w-3"></i></span></th>
+                <th class="px-4 py-3 min-w-[220px]">Suggested action</th>
+                <th class="px-4 py-3 min-w-[240px]">1st reply (draft)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+
+              <!-- Row 1: Cust2024-001 — High, mixed -->
+              <tr data-filter-item data-priority="high" data-sentiment="negative" data-sentiment-val="negative" data-priority-val="high" data-cluster="row" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"The pasta was incredible but our waiter forgot our order twice."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-001 · Yelp · Jun 5</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-positive"><i data-lucide="smile" class="h-3 w-3"></i> Positive</span><br class="my-1"><span class="pill badge-negative mt-1"><i data-lucide="frown" class="h-3 w-3"></i> Negative</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Food Quality</span><span class="chip">Service</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High</span></td>
+                <td class="px-4 py-3 align-top text-body">Brief kitchen team on order-accuracy during peak service; follow up with guest directly.</td>
+                <td class="px-4 py-3 align-top text-body">"We're sorry to hear about the mix-up with your order — that's not the experience we want for you. We'll review our ticket-handling process with the team and would love to host you again with a complimentary appetizer 🌿"</td>
+              </tr>
+
+              <!-- Row 2: Cust2024-003 — High, hair in food -->
+              <tr data-filter-item data-priority="high" data-sentiment="negative" data-sentiment-val="negative" data-priority-val="high" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"I found a hair in my food. The manager barely apologized when I told the host."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-003 · Google · Jun 5</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-negative"><i data-lucide="frown" class="h-3 w-3"></i> Negative</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Food Quality</span><span class="chip">Service</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High <i data-lucide="shield-alert" class="h-3 w-3"></i></span></td>
+                <td class="px-4 py-3 align-top text-body">Escalate to GM — potential health/safety concern, log incident report and contact guest within the hour.</td>
+                <td class="px-4 py-3 align-top text-body">"We are very sorry — this falls well short of our food-safety standards. We've shared this directly with our kitchen leadership and would like to make this right. Please allow us to cover your next visit and discuss this further with our GM."</td>
+              </tr>
+
+              <!-- Row 3: Cust2024-007 — High, ambiance unsafe -->
+              <tr data-filter-item data-priority="high" data-sentiment="negative" data-sentiment-val="negative" data-priority-val="high" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"The ambiance was terrifyingly unsafe — exposed wiring right by our booth."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-007 · TripAdvisor · Jun 4</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-negative"><i data-lucide="frown" class="h-3 w-3"></i> Negative</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Ambiance</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High <i data-lucide="shield-alert" class="h-3 w-3"></i></span></td>
+                <td class="px-4 py-3 align-top text-body">Escalate to facilities — inspect and repair exposed wiring near guest seating before next service.</td>
+                <td class="px-4 py-3 align-top text-body">"Thank you for flagging this — your safety is our top priority and we've alerted our facilities team to inspect that area immediately. We're sorry this affected your visit and would welcome the chance to host you again."</td>
+              </tr>
+
+              <!-- Row 4: Cust2024-002 — Normal, positive pizza -->
+              <tr data-filter-item data-priority="normal" data-sentiment="positive" data-sentiment-val="positive" data-priority-val="normal" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"Best pizza I've ever had! Will be back with the whole family."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-002 · Google · Jun 5</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-positive"><i data-lucide="smile" class="h-3 w-3"></i> Positive</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Food Quality</span><span class="chip">Overall Experience</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-normal"><i data-lucide="circle-dot" class="h-3 w-3"></i> Normal</span></td>
+                <td class="px-4 py-3 align-top text-body">Share with kitchen team as positive recognition; consider featuring in social proof.</td>
+                <td class="px-4 py-3 align-top text-body">"Thank you for your kind words! We can't wait to welcome you and the whole family back 🌿"</td>
+              </tr>
+
+              <!-- Row 5: Cust2024-010 — Normal, positive service -->
+              <tr data-filter-item data-priority="normal" data-sentiment="positive" data-sentiment-val="positive" data-priority-val="normal" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"Our server was so attentive — genuinely some of the best service we've had all year."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-010 · Yelp · Jun 6</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-positive"><i data-lucide="smile" class="h-3 w-3"></i> Positive</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Service</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-normal"><i data-lucide="circle-dot" class="h-3 w-3"></i> Normal</span></td>
+                <td class="px-4 py-3 align-top text-body">Recognize the server by name in next team huddle as a service excellence example.</td>
+                <td class="px-4 py-3 align-top text-body">"Thank you for your kind words! We can't wait to welcome you back 🌿 We'll be sure to pass this along to our team."</td>
+              </tr>
+
+              <!-- Row 6: Cust2024-004 — Normal, neutral ambiance (quiet) -->
+              <tr data-filter-item data-priority="normal" data-sentiment="neutral" data-sentiment-val="neutral" data-priority-val="normal" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"The ambiance was a bit quiet for a Saturday night, but the food made up for it."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-004 · Google · Jun 4</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-neutral"><i data-lucide="meh" class="h-3 w-3"></i> Neutral</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Ambiance</span><span class="chip">Food Quality</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-normal"><i data-lucide="circle-dot" class="h-3 w-3"></i> Normal</span></td>
+                <td class="px-4 py-3 align-top text-body">Note for weekend ambiance review — consider music/lighting calibration on slower nights.</td>
+                <td class="px-4 py-3 align-top text-body">"Thanks so much for the feedback — we're glad the food hit the mark! We're always tuning the evening atmosphere and will take this on board."</td>
+              </tr>
+
+              <!-- Row 7: Cust2024-005 — Normal, neutral ambiguous -->
+              <tr data-filter-item data-priority="normal" data-sentiment="neutral" data-sentiment-val="neutral" data-priority-val="normal" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"Food was okay, nothing special. Wouldn't go out of my way to return."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-005 · Yelp · Jun 3</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-neutral"><i data-lucide="meh" class="h-3 w-3"></i> Neutral</span></td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Food Quality</span><span class="chip">Overall Experience</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-normal"><i data-lucide="circle-dot" class="h-3 w-3"></i> Normal</span></td>
+                <td class="px-4 py-3 align-top text-body">Improve seasoning consistency on main course dishes; revisit with kitchen lead this week.</td>
+                <td class="px-4 py-3 align-top text-body">"Thanks for taking the time to share this — we're working on improving consistency across our menu and would love another chance to impress you."</td>
+              </tr>
+
+              <!-- Row 8: Cust2024-006 — N/A ambiguous edge case -->
+              <tr data-filter-item data-priority="low" data-sentiment="neutral" data-sentiment-val="neutral" data-priority-val="low" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition border-l-2 border-l-info/40" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"Nice place"</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-006 · Google · Jun 3 · <span class="inline-flex items-center gap-1 text-info"><i data-lucide="flask-conical" class="h-3 w-3"></i> validated edge case</span></p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-positive"><i data-lucide="smile" class="h-3 w-3"></i> Positive</span></td>
+                <td class="px-4 py-3 align-top">
+                  <span class="chip border-dashed text-muted">Tags = N/A</span>
+                  <p class="mt-1 text-[11px] text-info leading-snug">Too short for aspect detail — the model intentionally returns N/A rather than guessing (hallucination-avoidance, target 0% false tags).</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-low"><i data-lucide="circle-dot" class="h-3 w-3"></i> Low</span></td>
+                <td class="px-4 py-3 align-top text-body">No action needed — log as a brief positive mention; optional thank-you reply.</td>
+                <td class="px-4 py-3 align-top text-body">"Thank you for the kind words — we're so glad you enjoyed your visit and hope to see you again soon! 🌿"</td>
+              </tr>
+
+              <!-- Row 9: Cust2024-008 — Normal, implicit service complaint (wait time) -->
+              <tr data-filter-item data-priority="normal" data-sentiment="negative" data-sentiment-val="negative" data-priority-val="normal" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"The wait was 45 minutes on a Tuesday night with half the tables empty."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-008 · TripAdvisor · Jun 2</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-negative"><i data-lucide="frown" class="h-3 w-3"></i> Negative</span></td>
+                <td class="px-4 py-3 align-top">
+                  <div class="flex flex-wrap gap-1"><span class="chip chip-brand">Service</span></div>
+                  <p class="mt-1 text-[11px] text-muted leading-snug">No literal "service" keyword — the model inferred this from wait-time context, not pattern-matching.</p>
+                </td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-normal"><i data-lucide="circle-dot" class="h-3 w-3"></i> Normal</span></td>
+                <td class="px-4 py-3 align-top text-body">Review host-stand staffing and table-turn process for slower weeknights.</td>
+                <td class="px-4 py-3 align-top text-body">"We're sorry for the wait you experienced — that's not the pace we aim for, especially on a quieter night. We'll review our seating flow and would love to offer you a complimentary starter on your next visit."</td>
+              </tr>
+
+              <!-- Row 10: Cust2024-009 — High, idiom "killed my appetite" -->
+              <tr data-filter-item data-priority="high" data-sentiment="negative" data-sentiment-val="negative" data-priority-val="high" class="ft-row-enter cursor-pointer hover:bg-surfaceTint/60 transition" onclick="location.href='06-review-detail.html'">
+                <td class="px-4 py-3 align-top">
+                  <p class="font-medium text-ink">"Honestly, this restaurant killed my appetite. Cold food, colder service."</p>
+                  <p class="mt-1 text-xs text-muted">Cust2024-009 · Yelp · Jun 1</p>
+                </td>
+                <td class="px-4 py-3 align-top">
+                  <span class="pill badge-negative"><i data-lucide="frown" class="h-3 w-3"></i> Negative</span>
+                  <p class="mt-1 text-[11px] text-muted leading-snug">Compare: "killer pasta" → Positive. Same root word "kill", opposite sentiment — context wins over keywords.</p>
+                </td>
+                <td class="px-4 py-3 align-top"><div class="flex flex-wrap gap-1"><span class="chip chip-brand">Food Quality</span><span class="chip">Service</span></div></td>
+                <td class="px-4 py-3 align-top"><span class="pill badge-high"><i data-lucide="flame" class="h-3 w-3"></i> High</span></td>
+                <td class="px-4 py-3 align-top text-body">Brief kitchen + FOH leads jointly — recurring "cold food / cold service" pattern needs root-cause review.</td>
+                <td class="px-4 py-3 align-top text-body">"We're truly sorry your meal didn't meet expectations — cold food and service like this isn't who we are. We'll review our process with both teams and would love to offer you a complimentary main course to make it right."</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div id="filter-empty-priority" data-filter-empty class="hidden p-10 text-center">
+          <i data-lucide="search-x" class="mx-auto h-8 w-8 text-muted"></i>
+          <p class="mt-2 text-sm font-medium text-ink">No reviews match this filter combination</p>
+          <p class="text-xs text-muted">Try clearing the priority or sentiment filter above.</p>
+        </div>
+      </div>
+
+      <p class="text-xs text-muted text-center">Showing 10 of 14 processed reviews from Batch #042 · sorted High-priority first per Story 1 · <a href="06-review-detail.html" class="text-brandStrong hover:underline">open any review to draft and send a reply →</a></p>
+    </div>
+  </main>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

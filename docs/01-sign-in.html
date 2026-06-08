@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased min-h-screen">
+
+  <div class="grid min-h-screen lg:grid-cols-2">
+    <!-- Brand panel -->
+    <div class="hidden lg:flex flex-col justify-between bg-gradient-to-br from-brand via-brandStrong to-brandInk p-10 text-white">
+      <div class="flex items-center gap-2.5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+        <p class="font-display text-lg font-bold">FreshTake</p>
+      </div>
+      <div class="space-y-4 max-w-md">
+        <p class="font-display text-3xl font-bold leading-tight">Every review, read. Every reply, ready in under a minute.</p>
+        <p class="text-white/80 text-sm leading-relaxed">FreshTake categorises a batch of customer reviews — sentiment, aspect, priority, suggested action and a draft reply — in one pass, then keeps a human in charge of every send.</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-sm text-sm">
+        <p class="text-white/70 text-xs uppercase tracking-wide font-semibold">Trusted across</p>
+        <p class="mt-1 font-display text-xl font-bold">Harvest Kitchen — 12 locations piloting FreshTake</p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="flex items-center justify-center p-6 sm:p-10">
+      <div class="w-full max-w-sm space-y-6 ft-fade-in">
+        <div class="lg:hidden flex items-center gap-2.5 mb-2">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-white"><i data-lucide="leaf" class="h-5 w-5"></i></div>
+          <p class="font-display text-lg font-bold">FreshTake</p>
+        </div>
+        <div>
+          <h1 class="font-display text-2xl font-bold text-ink">Welcome back</h1>
+          <p class="mt-1 text-sm text-body">Sign in to your Harvest Kitchen workspace to triage today's reviews.</p>
+        </div>
+
+        <form class="space-y-4" onsubmit="event.preventDefault(); location.href='02-dashboard.html';">
+          <div>
+            <label for="email" class="block text-sm font-medium text-ink mb-1.5">Work email</label>
+            <div class="relative">
+              <i data-lucide="mail" class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted"></i>
+              <input id="email" name="email" type="email" autocomplete="email" required value="maria.reyes@harvestkitchen.com"
+                class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand focus:ring-2 focus:ring-brand/20 ft-focus" />
+            </div>
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-ink mb-1.5">Password</label>
+            <div class="relative">
+              <i data-lucide="lock" class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted"></i>
+              <input id="password" name="password" type="password" autocomplete="current-password" required value="••••••••••"
+                class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand focus:ring-2 focus:ring-brand/20 ft-focus" />
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <label class="inline-flex items-center gap-2 text-body">
+              <input type="checkbox" checked class="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand/30 ft-focus" />
+              Keep me signed in
+            </label>
+            <a href="#" class="font-medium text-brandStrong hover:underline">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary w-full"><i data-lucide="log-in" class="h-4 w-4"></i> Sign in</button>
+        </form>
+
+        <div class="relative text-center">
+          <span class="relative z-10 bg-bg px-3 text-xs text-muted sm:bg-white">or continue with</span>
+          <div class="absolute inset-x-0 top-1/2 h-px bg-slate-200"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" onclick="location.href='02-dashboard.html'" class="btn btn-secondary"><i data-lucide="building-2" class="h-4 w-4"></i> Microsoft SSO</button>
+          <button type="button" onclick="location.href='02-dashboard.html'" class="btn btn-secondary"><i data-lucide="shield-check" class="h-4 w-4"></i> SAML / SSO</button>
+        </div>
+
+        <p class="text-center text-sm text-body">
+          New to FreshTake? <a href="#" class="font-medium text-brandStrong hover:underline">Request a pilot workspace</a>
+        </p>
+        <p class="text-center text-xs text-muted">
+          <a href="../index.html" class="inline-flex items-center gap-1 hover:text-brandStrong"><i data-lucide="arrow-left" class="h-3 w-3"></i> Back to mockup hub</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

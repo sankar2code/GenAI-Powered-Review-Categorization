@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Processing batch — FreshTake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="../assets/styles.css">
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      brand: '#0d9488', brandStrong: '#0f766e', brandSoft: '#ccfbf1', brandInk: '#134e4a',
+      positive: '#059669', negative: '#e11d48', neutral: '#d97706', info: '#0284c7',
+      ink: '#0f172a', body: '#475569', muted: '#94a3b8', surfaceTint: '#f0fdfa'
+    },
+    fontFamily: { display: ['Sora','ui-sans-serif','system-ui'], sans: ['Inter','ui-sans-serif','system-ui'] }
+  } } };
+</script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased min-h-screen flex items-center justify-center p-6">
+
+  <div class="w-full max-w-xl ft-fade-in">
+    <div class="ft-card rounded-2xl p-8 text-center">
+      <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brandSoft text-brandStrong">
+        <i data-lucide="sparkles" class="h-8 w-8"></i>
+      </div>
+      <h1 class="mt-5 font-display text-xl font-bold text-ink">Copilot AI is processing your batch…</h1>
+      <p class="mt-2 text-sm text-body">Reading 14 reviews, scoring sentiment, tagging aspects, assigning priority and drafting first replies — all in one engineered-prompt pass.</p>
+
+      <div class="mt-6">
+        <div class="ft-meter">
+          <span id="progress-bar" class="ft-progress-anim bg-gradient-to-r from-brand to-brandStrong"></span>
+        </div>
+        <div class="mt-2 flex items-center justify-between text-xs text-muted">
+          <span id="progress-pct" class="font-mono">6%</span>
+          <span>Target: under 30 seconds for a 10-review batch</span>
+        </div>
+      </div>
+
+      <ul class="mt-6 space-y-2.5 text-left">
+        <li class="flex items-center gap-3 rounded-xl border border-slate-100 bg-surfaceTint/60 p-3">
+          <i data-lucide="check-circle-2" class="h-4 w-4 text-positive flex-shrink-0"></i>
+          <span class="text-sm text-ink">Reviews ingested &amp; de-duplicated <span class="text-muted">(14 of 14)</span></span>
+        </li>
+        <li class="flex items-center gap-3 rounded-xl border border-slate-100 bg-surfaceTint/60 p-3">
+          <i data-lucide="check-circle-2" class="h-4 w-4 text-positive flex-shrink-0"></i>
+          <span class="text-sm text-ink">Sentiment &amp; aspect tagging complete</span>
+        </li>
+        <li class="flex items-center gap-3 rounded-xl border border-brand/20 bg-brandSoft/50 p-3">
+          <span class="relative flex h-4 w-4 flex-shrink-0 items-center justify-center"><i data-lucide="loader-circle" class="h-4 w-4 text-brandStrong animate-spin"></i></span>
+          <span class="text-sm text-ink">Assigning priority &amp; drafting first replies <span class="text-muted">— 9 of 14</span></span>
+        </li>
+        <li class="flex items-center gap-3 rounded-xl border border-slate-100 p-3 opacity-60">
+          <span class="h-4 w-4 flex-shrink-0 rounded-full border-2 border-slate-300"></span>
+          <span class="text-sm text-body">Compiling structured output table</span>
+        </li>
+      </ul>
+
+      <div class="mt-6 flex items-center justify-center gap-1.5 text-xs text-muted">
+        <span class="ft-pulse-dot h-1.5 w-1.5 rounded-full bg-brand"></span>
+        <span class="ft-pulse-dot h-1.5 w-1.5 rounded-full bg-brand" style="animation-delay:.2s"></span>
+        <span class="ft-pulse-dot h-1.5 w-1.5 rounded-full bg-brand" style="animation-delay:.4s"></span>
+        <span class="ml-2">This usually takes about 25 seconds — hang tight</span>
+      </div>
+
+      <p class="mt-6 text-xs text-muted">Taking longer than expected? <a href="#" onclick="event.preventDefault(); ftToast('Copilot AI unavailable — automatically retried using the secondary engineered prompt.', {icon:'shield-alert'});" class="font-medium text-brandStrong hover:underline">See fallback behaviour</a> · <a href="03-new-batch.html" class="font-medium text-body hover:underline">Cancel and go back</a></p>
+    </div>
+  </div>
+
+  <div id="ft-toast" class="ft-card rounded-xl px-4 py-2.5 text-sm text-ink shadow-lg flex items-center gap-2">
+    <i data-lucide="check-circle-2" data-toast-icon class="h-4 w-4 text-positive"></i>
+    <span data-toast-text></span>
+  </div>
+  <script src="../assets/app.js"></script>
+  <script>
+    // Animate the percentage readout alongside the CSS width animation, then route to results
+    const pctEl = document.getElementById('progress-pct');
+    let pct = 6;
+    const tick = setInterval(() => {
+      pct = Math.min(96, pct + Math.round(2 + Math.random() * 6));
+      pctEl.textContent = pct + '%';
+      if (pct >= 96) clearInterval(tick);
+    }, 380);
+
+    setTimeout(() => { location.href = '05-batch-results.html'; }, 7200);
+  </script>
+</body>
+</html>
