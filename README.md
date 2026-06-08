@@ -1,5 +1,7 @@
 # FreshTake — clickable mockup
 
+URL - https://sankar.work/GenAI-Powered-Review-Categorization/
+
 A high-fidelity, click-through HTML prototype of **FreshTake**, built from the
 "GenAI-Powered Review Categorization System" PRD. FreshTake is a workflow tool
 that lets restaurant managers paste or upload a batch of customer reviews,
