@@ -1,0 +1,1 @@
+Built a text-classification model that analyzes SMS messages labeled 'spam' and 'ham' to extract meaningful signals and predict whether a new message is spam. The solution automates spam detection, helping prevent phishing and cyber attacks before messages reach users.
