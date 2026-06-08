@@ -1,0 +1,240 @@
+/* FreshTake — shared design tokens & overrides (Tailwind handles the rest via CDN) */
+
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-tint: #f0fdfa;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --border-soft: #eef2f6;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --brand: #0d9488;
+  --brand-strong: #0f766e;
+  --brand-soft: #ccfbf1;
+  --brand-ink: #134e4a;
+
+  --positive: #059669;
+  --positive-soft: rgba(5, 150, 105, 0.12);
+  --negative: #e11d48;
+  --negative-soft: rgba(225, 29, 72, 0.10);
+  --neutral: #d97706;
+  --neutral-soft: rgba(217, 119, 6, 0.12);
+  --info: #0284c7;
+  --info-soft: rgba(2, 132, 199, 0.10);
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Focus ring */
+.ft-focus:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Card / surface helpers */
+.ft-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px 0 rgb(15 23 42 / 0.04);
+}
+
+/* Badges — sentiment */
+.badge-positive { background: var(--positive-soft); color: var(--positive); }
+.badge-negative { background: var(--negative-soft); color: var(--negative); }
+.badge-neutral  { background: var(--neutral-soft);  color: var(--neutral); }
+
+/* Badges — priority (re-use semantic colors per spec: High=rose, Normal=amber, Low=slate/emerald) */
+.badge-high   { background: var(--negative-soft); color: var(--negative); }
+.badge-normal { background: var(--neutral-soft);  color: var(--neutral); }
+.badge-low    { background: var(--positive-soft); color: var(--positive); }
+
+/* Status pipeline badges */
+.badge-open        { background: var(--info-soft); color: var(--info); }
+.badge-progress    { background: var(--neutral-soft); color: var(--neutral); }
+.badge-resolved    { background: var(--positive-soft); color: var(--positive); }
+
+/* Aspect tag chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+.chip-brand {
+  border-color: rgba(13, 148, 136, 0.25);
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+}
+
+/* Pill base for sentiment/priority badges */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 0.25rem 0.65rem;
+  white-space: nowrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.6rem 1.1rem;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .05s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--brand);
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgb(13 148 136 / 0.25);
+}
+.btn-primary:hover { background: var(--brand-strong); }
+.btn-secondary {
+  background: var(--surface);
+  color: var(--brand-strong);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--surface-tint); border-color: rgba(13,148,136,.35); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn-ghost:hover { background: var(--surface-2); color: var(--text-primary); }
+.btn-danger {
+  background: #fff1f2;
+  color: var(--negative);
+  border: 1px solid rgba(225,29,72,.2);
+}
+.btn-danger:hover { background: #ffe4e6; }
+.btn:disabled, .btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Nav active state */
+.ft-nav-link.is-active {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  font-weight: 600;
+}
+.ft-nav-link.is-active .ft-nav-icon { color: var(--brand-strong); }
+
+/* Toast */
+#ft-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(140%);
+  transition: transform 0.25s ease;
+  z-index: 60;
+}
+#ft-toast.ft-toast-show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Meter / progress bar track */
+.ft-meter {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.ft-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* Animated progress shimmer for processing screen */
+@keyframes ft-progress-fill {
+  from { width: 6%; }
+  to   { width: 92%; }
+}
+.ft-progress-anim {
+  animation: ft-progress-fill 7s cubic-bezier(.2,.7,.3,1) forwards;
+}
+
+@keyframes ft-pulse-dot {
+  0%, 100% { opacity: .35; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.ft-pulse-dot { animation: ft-pulse-dot 1.4s ease-in-out infinite; }
+
+/* Row enter animation for batch results */
+@keyframes ft-row-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ft-row-enter { animation: ft-row-in .3s ease-out; }
+
+/* Sparkline bars grow-in */
+@keyframes ft-bar-grow { from { height: 0; } }
+.ft-bar { animation: ft-bar-grow .6s ease-out; }
+
+/* Simple fade-in for page content */
+@keyframes ft-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ft-fade-in { animation: ft-fade-in .4s ease-out; }
+
+/* Locked toggle (mandatory human approval) */
+.ft-toggle-locked {
+  background: var(--brand);
+  position: relative;
+  cursor: not-allowed;
+}
+.ft-toggle-locked::after {
+  content: '';
+  position: absolute;
+  top: 2px; right: 2px;
+  width: 20px; height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / .2);
+}
